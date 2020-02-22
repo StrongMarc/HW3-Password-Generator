@@ -6,6 +6,16 @@ function passwprdLength () {
   console.log(length)
 }
 
+function characterTypes () {
+  var lowercase = confirm(`Password criteria to include lowercase?`)
+  console.log(lowercase)
+  var uppercase = confirm(`Password criteria to include uppercase?`)
+  console.log(uppercase)
+  var numeric = confirm(`Password criteria to include numeric?`)
+  console.log(numeric)
+  var specialChar = confirm(`Password criteria to include special characters?`)
+  console.log(specialChar)
+}
 function criteriaType () {
   var criteria = prompt(`Select password criteria to include:  Press "1" for lenth or Press "2" for character types`);
   console.log(criteria)
@@ -15,8 +25,13 @@ function criteriaType () {
   else if (criteria < 1 || criteria > 2) {
     criteriaType ();
   }
-  else if (criteria == 1)
+  else if (criteria == 1){
     passwprdLength();
+  }
+  else if (criteria == 2){
+    console.log(criteria)
+    characterTypes();
+  }
 }
 
 
