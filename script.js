@@ -10,14 +10,19 @@ function criteriaType () {
   var criteria = prompt(`Select password criteria to include:  Press "1" for lenth or Press "2" for character types`);
   console.log(criteria)
   if (isNaN(criteria)) {
-    criteriaType ()
+    criteriaType ();
   }
   else if (criteria < 1 || criteria > 2) {
-    criteriaType ()
+    criteriaType ();
   }
+  else if (criteria == 1)
+    passwprdLength();
 }
-criteriaType();
 
+
+document.getElementById('generate').onclick = function() {
+	criteriaType();
+}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
