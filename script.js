@@ -19,7 +19,10 @@ function characterTypes () {
 function criteriaType () {
   var criteria = prompt(`Select password criteria to include:  Press "1" for lenth or Press "2" for character types`);
   console.log(criteria)
-  if (isNaN(criteria)) {
+  if (criteria == null) {
+    alert("User cancelled the prompt.");
+  }
+  else if (isNaN(criteria)) {
     criteriaType ();
   }
   else if (criteria < 1 || criteria > 2) {
@@ -34,10 +37,14 @@ function criteriaType () {
   }
 }
 
-
-document.getElementById('generate').onclick = function() {
+generateBtn.onclick = function() {
 	criteriaType();
 }
+// alternate code
+// document.getElementById('generate').onclick = function() {
+// 	criteriaType();
+// }
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
