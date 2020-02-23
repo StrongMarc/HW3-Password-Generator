@@ -1,9 +1,19 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function passwprdLength () {
+function passwordLength () {
   var length = prompt(`Choose a legnth of at least 8 characters and no more than 128 characters`)
   console.log(length)
+  if (length == null) {
+    alert("User cancelled the prompt.");
+    criteriaType ();
+  }
+  else if (isNaN(length)) {
+    passwordLength ();
+  }
+  else if (length < 8 || length > 128) {
+    passwordLength ();
+  }
 }
 
 function characterTypes () {
@@ -29,7 +39,7 @@ function criteriaType () {
     criteriaType ();
   }
   else if (criteria == 1){
-    passwprdLength();
+    passwordLength();
   }
   else if (criteria == 2){
     console.log(criteria)
