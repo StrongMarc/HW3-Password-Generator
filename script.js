@@ -1,11 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//code for user input to define password length
 function passwordLength () {
-  var length = prompt(`Choose a legnth of at least 8 characters and no more than 128 characters`)
+  var length = prompt(`Choose a legnth of at least 8 characters and no more than 128 characters (Enter: 8-128)`)
   console.log(length)
   if (length == null) {
-    alert("User cancelled the prompt.");
+    alert("User cancelled the prompt.  Returning to previous prompt");
     criteriaType ();
   }
   else if (isNaN(length)) {
@@ -16,6 +17,8 @@ function passwordLength () {
   }
 }
 
+//code for user input to define types of characters to be 
+// utilized for the generate password
 function characterTypes () {
   var lowercase = confirm(`Password criteria to include lowercase?`)
   console.log(lowercase)
@@ -26,6 +29,9 @@ function characterTypes () {
   var specialChar = confirm(`Password criteria to include special characters?`)
   console.log(specialChar)
 }
+
+//code for user input to select which criteria type to 
+// define for the generated password
 function criteriaType () {
   var criteria = prompt(`Select password criteria to include:  Press "1" for lenth or Press "2" for character types`);
   console.log(criteria)
@@ -47,10 +53,11 @@ function criteriaType () {
   }
 }
 
+//Generate password by selecting button to initiate prompts
 generateBtn.onclick = function() {
 	criteriaType();
 }
-// alternate code
+// alternate generate button code to start prompts
 // document.getElementById('generate').onclick = function() {
 // 	criteriaType();
 // }
