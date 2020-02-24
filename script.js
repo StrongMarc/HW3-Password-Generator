@@ -1,7 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var typeCount = 0;
 //code for user input to define password length
 function passwordLength () {
   length = prompt(`Choose a length of at least 8 characters and no more than 128 characters (Enter: 8-128)`)
@@ -60,6 +59,7 @@ function characterTypes () {
 //code for user input to select which criteria type to 
 // define for the generated password
 function criteriaType () {
+  typeCount = 0;
   var criteria = prompt(`Select password criteria to include:  Press "1" for lenth or Press "2" for character types`);
   console.log(criteria)
   if (criteria == null) {
@@ -81,7 +81,8 @@ function criteriaType () {
 
 //Generate password by selecting button to initiate prompts
 generateBtn.onclick = function() {
-	criteriaType();
+  
+  criteriaType();
 }
 // alternate generate button code to start prompts
 // document.getElementById('generate').onclick = function() {
@@ -173,9 +174,10 @@ function generatePassword(length) {
 function writePassword() {
   var password = generatePassword(length);
   var passwordText = document.querySelector("#password");
-
+  
   passwordText.value = password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
