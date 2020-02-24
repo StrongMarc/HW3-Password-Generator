@@ -6,9 +6,13 @@ var typeCount = 0;
 function passwordLength () {
   var length = prompt(`Choose a length of at least 8 characters and no more than 128 characters (Enter: 8-128)`)
   console.log(length)
-  if (length == null) {
+  if (length == null && typeCount == 0) {
     alert("User cancelled the prompt.  Returning to previous prompt");
     criteriaType ();
+  }
+  if (length == null && typeCount == 1) {
+    alert("User cancelled the prompt.  Must define password length criteria");
+    passwordLength ();
   }
   else if (isNaN(length)) {
     passwordLength ();
