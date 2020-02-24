@@ -87,6 +87,8 @@ generateBtn.onclick = function() {
 // document.getElementById('generate').onclick = function() {
 // 	criteriaType();
 // }
+
+//code that creates password from the defined criteria
 function generatePassword(length) {
   password = '';
   var characters = '';
@@ -173,7 +175,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
