@@ -4,20 +4,21 @@ var generateBtn = document.querySelector("#generate");
 var typeCount = 0;
 //code for user input to define password length
 function passwordLength () {
-  length = parseInt(prompt(`Choose a length of at least 8 characters and no more than 128 characters (Enter: 8-128)`))
+  length = prompt(`Choose a length of at least 8 characters and no more than 128 characters (Enter: 8-128)`)
   console.log(length)
+  console.log(typeCount)
   if (length == null && typeCount == 0) {
     alert("User cancelled the prompt.  Returning to previous prompt");
     criteriaType ();
   }
-  if (length == null && typeCount == 1) {
+  else if (length == null && typeCount == 1) {
     alert("User cancelled the prompt.  Must define password length criteria");
     passwordLength ();
   }
   else if (isNaN(length)) {
     passwordLength ();
   }
-  else if (length < 8 || length > 128) {
+  else if (length < 8|| length > 128) {
     passwordLength ();
   }
   else {
@@ -87,7 +88,7 @@ generateBtn.onclick = function() {
 // 	criteriaType();
 // }
 function generatePassword(length) {
-  var password = '';
+  password = '';
   var characters = '';
   if (lowercase) {
     characters += 'abcdefghijklmnopqrstuvwxyz';
@@ -103,13 +104,67 @@ function generatePassword(length) {
   }
   if (specialChar){
     characters += `!"#$%&'()*+,-./:;<=>?@[\]^_{|}~`;
+    characters += "`";
     console.log(characters);
   }
-    var charactersLength = characters.length;
+  var charactersLength = characters.length;
   for ( var i = 0; i < length; i++ ) {
     password += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
-  return password;
+  console.log(password)
+
+  // check if password has lowercase character
+  console.log(lowercase);
+  if (lowercase) {
+    var patt1 = /[a-z]/g;
+    var res1 = patt1.test(password);
+    console.log(res1);
+    if (res1==false) {
+      password = '';
+      console.log(password);
+      generatePassword(length);
+    }
+  }
+  
+  // check if password has uppercase character
+  console.log(uppercase);
+  if (uppercase) {
+    var patt2 = /[A-Z]/g;
+    var res2 = patt2.test(password);
+    console.log(res2);
+    if (res2==false) {
+      password = '';
+      console.log(password);
+      generatePassword(length);
+    }
+  }
+
+  // check if password has uppercase character
+  console.log(numeric);
+  if (numeric) {
+    var patt3 = /[0-9]/g;
+    var res3 = patt3.test(password);
+    console.log(res3);
+    if (res3==false) {
+      password = '';
+      console.log(password);
+      generatePassword(length);
+    }
+  }
+  // check if password has uppercase character
+  console.log(specialChar);
+  if (specialChar) {
+    var patt4 = /[!"#$%&'()*+,-./:;<=>?@[\]^_{|}~]/g;
+    var res4 = patt4.test(password);
+    console.log(res4);
+    if (res4==false) {
+      password = '';
+      console.log(password);
+      generatePassword(length);
+    }
+  }
+  console.log(password)
+  return password
 }
 
 // Write password to the #password input
