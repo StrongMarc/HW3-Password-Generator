@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 var typeCount = 0;
 //code for user input to define password length
 function passwordLength () {
-  var length = prompt(`Choose a length of at least 8 characters and no more than 128 characters (Enter: 8-128)`)
+  length = parseInt(prompt(`Choose a length of at least 8 characters and no more than 128 characters (Enter: 8-128)`))
   console.log(length)
   if (length == null && typeCount == 0) {
     alert("User cancelled the prompt.  Returning to previous prompt");
@@ -28,12 +28,12 @@ function passwordLength () {
       characterTypes ();
     }
   }
-  // return {parseInt(length);
 }
-// console.log(y)
+
 //code for user input to define types of characters to be 
 // utilized for the generate password
 function characterTypes () {
+  console.log(length)
   var lowercase = confirm(`Password criteria to include lowercase?`)
   console.log(lowercase)
   var uppercase = confirm(`Password criteria to include uppercase?`)
@@ -98,7 +98,7 @@ function generatePassword(length) {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword(8);
+  var password = generatePassword(length);
   var passwordText = document.querySelector("#password");
   // console.log(generatePassword(length));
   passwordText.value = password;
