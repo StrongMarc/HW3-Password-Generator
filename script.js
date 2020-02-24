@@ -34,13 +34,13 @@ function passwordLength () {
 // utilized for the generate password
 function characterTypes () {
   console.log(length)
-  var lowercase = confirm(`Password criteria to include lowercase?`)
+  lowercase = confirm(`Password criteria to include lowercase?`)
   console.log(lowercase)
-  var uppercase = confirm(`Password criteria to include uppercase?`)
+  uppercase = confirm(`Password criteria to include uppercase?`)
   console.log(uppercase)
-  var numeric = confirm(`Password criteria to include numeric?`)
+  numeric = confirm(`Password criteria to include numeric?`)
   console.log(numeric)
-  var specialChar = confirm(`Password criteria to include special characters?`)
+  specialChar = confirm(`Password criteria to include special characters?`)
   console.log(specialChar)
   if (lowercase == true || uppercase == true || numeric == true || specialChar == true) {
     typeCount++
@@ -87,9 +87,25 @@ generateBtn.onclick = function() {
 // 	criteriaType();
 // }
 function generatePassword(length) {
-  var password           = '';
-  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
+  var password = '';
+  var characters = '';
+  if (lowercase) {
+    characters += 'abcdefghijklmnopqrstuvwxyz';
+    console.log(characters);
+  }
+  if (uppercase){
+    characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    console.log(characters);
+  }
+  if (numeric){
+    characters += '1234567890';
+    console.log(characters);
+  }
+  if (specialChar){
+    characters += `!"#$%&'()*+,-./:;<=>?@[\]^_{|}~`;
+    console.log(characters);
+  }
+    var charactersLength = characters.length;
   for ( var i = 0; i < length; i++ ) {
     password += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
@@ -100,15 +116,10 @@ function generatePassword(length) {
 function writePassword() {
   var password = generatePassword(length);
   var passwordText = document.querySelector("#password");
-  // console.log(generatePassword(length));
+
   passwordText.value = password;
 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// document.getElementsByTagName("h1")[0].addEventListener("click", change);
-// function change(event){
-//     document.getElementsByTagName("h1")[0].innerHTML = "YOU CLICKED ME!"
-//     console.log(event)
